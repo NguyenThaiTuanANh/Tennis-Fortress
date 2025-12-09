@@ -86,7 +86,10 @@ public class EnemyController : MonoBehaviour
         UpdateHealthBar();
 
         if (currentHP <= 0)
+        {
             Die();
+            FlyArcAndDie.Instance.FlyAndDie(this.transform, transform.forward);
+        }
         else
         {
             anim.SetBool("isTakeDame", true);

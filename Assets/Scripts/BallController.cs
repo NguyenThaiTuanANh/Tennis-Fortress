@@ -160,8 +160,11 @@ public class BallController : MonoBehaviour
     void HandleEnemyHit(Collider collision)
     {
         EnemyController enemy = collision.GetComponent<EnemyController>();
-        
         if (!enemy) return;
+
+        ParticleSystem particle = HitParticlePool.Instance.GetParticle();
+        particle.transform.position = enemy.transform.position + Vector3.up * 1;
+        particle.Play();
 
         int finalDamage = dameBall;
 
